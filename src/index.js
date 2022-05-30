@@ -1,7 +1,9 @@
-let age = 25;
+let numberA = 12;
+let numberB = "2";
 
-console.log(age);
+console.log(numberA * numberB);
+console.log(numberA + numberB);
+console.log(numberA / numberB);
+console.log(numberA - numberB);
 
-age = 50;
-
-console.log(age);
+console.log(numberA + parseInt(numberB));
