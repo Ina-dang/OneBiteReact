@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function addItem(){
+            const ul = document.getElementById("list");
+            for (let index = 0; index < 5; index++) {
+                const element = document.createElement("li");
+                element.innerHTML = `hi ${index}`;
+                ul.append(element);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2 id="result">Item List</h2>
+    <div>
+        <ul id="list"></ul>
+        <button onclick="addItem()">add</button>
+    </div>
+</body>
+</html>

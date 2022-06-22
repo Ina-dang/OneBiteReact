@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function plus() {
+            const result = document.getElementById("result");
+            const current = parseInt(result.innerText, 10);
+            result.innerText = current + 1;
+        }
+        function minus() {
+            const result = document.getElementById("result");
+            const current = parseInt(result.innerText, 10);
+            result.innerText = current - 1;
+        }
+    </script>
+</head>
+<body>
+    <p>Simple Counter</p>
+    <h2 id="result">0</h2>
+    <div>
+        <button onclick="minus()">Minus</button>
+        <button onclick="plus()">Plus</button>
+    </div>
+</body>
+</html>
