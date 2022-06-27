@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import MyHeader from './MyHeader';
+import MyFooter from './MyFooter';
+import Counter from './Counter';
 
+const func = () => {
+  return "func";
+}
+
+const number = 5;
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          <h2>안녕리액트</h2>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MyHeader/>
+        <h2>안녕리액트 {func()} </h2>
+        <b id='bold_text'>
+          {number}는 : {number % 2 === 0 ? "짝수" : "홀수"}
+        </b>
+      <Counter/>
+      <MyFooter/>
     </div>
   );
 }
