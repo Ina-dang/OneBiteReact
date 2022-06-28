@@ -1,25 +1,25 @@
-import './App.css';
-import MyHeader from './MyHeader';
-import MyFooter from './MyFooter';
-import Counter from './Counter';
+import React from "react";
+import Container from "./Container";
+import Counter from "./Counter";
+import MyFooter from "./MyFooter";
+import MyHeader from "./MyHeader";
 
-const func = () => {
-  return "func";
-}
+function App(){
+    const counterProps = {
+        a : 1,
+        b : 2,
+        initialValue : 5
+    }
 
-const number = 5;
-function App() {
-  return (
-    <div className="App">
-      <MyHeader/>
-        <h2>안녕리액트 {func()} </h2>
-        <b id='bold_text'>
-          {number}는 : {number % 2 === 0 ? "짝수" : "홀수"}
-        </b>
-      <Counter/>
-      <MyFooter/>
-    </div>
-  );
+    return (
+        <Container>
+            <div>
+                <MyHeader/>
+                <Counter {...counterProps}/>
+                <MyFooter/>
+            </div>
+        </Container>
+    )
 }
 
 export default App;
