@@ -25,6 +25,7 @@ const DiaryEditor = ({onCreate}) => {
         } 
 
         if(state.content.length < 5){
+            alert("5자 이상 입력하세요")
             contentInput.current.focus();
             return;
         }
