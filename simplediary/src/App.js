@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import DiaryEditor from './DiaryEditor';
 import DiaryList from './DiaryList';
 import './App.css';
@@ -36,9 +36,9 @@ import './App.css';
 
 function App() {
 
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
 
-  const dataId = useRef(0);
+  const dataId = useRef(1);
 
   const onCreate = (author, content, emotion) => {
     const created_date = new Date().getTime();
@@ -52,17 +52,23 @@ function App() {
     dataId.current += 1;
     setData([newItem, ...data]);
   };
-                  //지우고자하는 타겟id
-  const onDelete = (targetId) => {
+
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((it) => it.id === targetId ? { ...it, content: newContent } : it)
+    )
+  }
+
+  const onRemove = (targetId) => {
     console.log(`${targetId}가 삭제되었습니다`);
-    const newDiaryList = data.filter((it)=>it.id !== targetId);
+    const newDiaryList = data.filter((it) => it.id !== targetId);
     setData(newDiaryList);
   }
 
   return (
     <div className="App">
-      <DiaryEditor onCreate = {onCreate}/>
-      <DiaryList onDelete = {onDelete} diaryList={data}/>
+      <DiaryEditor onCreate={onCreate} />
+      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
     </div>
 
   );
