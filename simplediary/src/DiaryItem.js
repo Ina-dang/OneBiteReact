@@ -1,8 +1,18 @@
-import { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const DiaryItem = ({
-    onEdit, onRemove, author, content, created_date, emotion, id
+    onEdit,
+    onRemove,
+    author,
+    content,
+    created_date,
+    emotion,
+    id
 }) => {
+
+    useEffect(() => {
+        console.log(`${id}번 째 아이템 랜더!`)
+    });
 
     const [isEdit, setIsEdit] = useState(false);
     const toggleIsEdit = () => setIsEdit(!isEdit);
@@ -73,4 +83,4 @@ const DiaryItem = ({
     );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);

@@ -44,19 +44,19 @@ function App() {
     setData((data) => [newItem, ...data]);
   }, []);
 
-  const onEdit = (targetId, newContent) => {
-    setData(
-      data.map((it) => it.id === targetId ? { ...it, content: newContent } : it)
-    )
-  }
+  const onEdit = useCallback((targetId, newContent) => {
+    setData((data) =>
+      data.map((it) =>
+        it.id === targetId ? { ...it, content: newContent } : it
+      )
+    );
+  }, []);
 
-  const onRemove = (targetId) => {
-    const newDiaryList = data.filter((it) => it.id !== targetId);
-    setData(newDiaryList);
-  }
+  const onRemove = useCallback((targetId) => {
+    setData(data => data.filter((it) => it.id !== targetId));
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
-    // console.log("일기 분석 시작");
 
     const goodCount = data.filter((it) => it.emotion >= 3).length;
     const badCount = data.length - goodCount;
