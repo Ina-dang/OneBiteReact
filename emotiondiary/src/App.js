@@ -16,15 +16,15 @@ const reducer = (state, action) => {
       return action.data;
     }
     case 'CREATE': {
-      newState = [...action.data, ...state];
+      newState = [action.data, ...state];
       break;
     }
     case 'REMOVE': {
-      newState = state.filter((it) => it.id !== action.data);
+      newState = state.filter((it) => it.id !== action.targetId);
       break;
     }
     case 'EDIT': {
-      newState = state.map((it) => it.id === action.data.id ? { ...action.data } : it);
+      newState = state.map((it) => it.id === action.data.id ? [...action.data] : it);
       break;
     }
     default:
@@ -76,7 +76,8 @@ function App() {
   const dataId = useRef(0);
   const onCreate = (date, content, emotion) => {
     dispatch({
-      type: "CREATE", data: {
+      type: "CREATE",
+      data: {
         id: dataId.current,
         data: new Date(date).getTime(),
         content,
@@ -99,7 +100,6 @@ function App() {
       }
     })
   }
-
 
   return (
     <DiaryStateContext.Provider value={data}>
